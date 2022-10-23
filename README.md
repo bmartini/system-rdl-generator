@@ -13,5 +13,5 @@ The SystemRDL configuration files should follow the following [standard](https:/
 The following packages need to be installed to get the generators working.
 
 ```bash
-python3 -m pip install systemrdl-compiler click
+python3 -m pip install systemrdl-compiler
 ```

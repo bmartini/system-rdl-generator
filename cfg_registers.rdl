@@ -1,0 +1,55 @@
+addrmap cfg_registers {
+    addressing = compact;
+    alignment = 4;
+    default regwidth = 32;
+
+    reg {
+        desc = "First configuration register.";
+        field {
+            desc = "Configuration register value.";
+            sw = rw;
+            hw = r;
+        } value;
+    } FIRST;
+
+    reg {
+        desc = "Second configuration register.";
+        field {
+            desc = "Least Significant Half of configuration register.";
+            sw = rw;
+            hw = r;
+        } lsh[15:0];
+        field {
+            desc = "Most Significant Half of configuration register.";
+            sw = rw;
+            hw = r;
+        } msh[31:16];
+    } SECOND;
+
+    regfile {
+        desc = "Array of registers";
+
+        reg {
+            desc = "Array element 1.";
+            field {
+                desc = "Configuration register value.";
+                sw = rw;
+                hw = r;
+            } value;
+        } START;
+
+        reg {
+            desc = "Reserved for Future Use.";
+            field {} empty;
+        } RFU[4];
+
+        reg {
+            desc = "Array element 8.";
+            field {
+                desc = "Configuration register value.";
+                sw = rw;
+                hw = r;
+            } value;
+        } END;
+    } ARRAY[3] @ 32;
+};

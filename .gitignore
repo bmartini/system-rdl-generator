@@ -1,4 +1,7 @@
 *.swp
 *.bak
+*.svh
+*.hh
+*/
 .mypy_cache
 __pycache__
