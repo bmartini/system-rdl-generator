@@ -1,0 +1,4 @@
+*.swp
+*.bak
+.mypy_cache
+__pycache__
