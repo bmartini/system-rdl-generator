@@ -3,9 +3,10 @@
 
 import sys
 from pathlib import Path
-from systemrdl import RDLCompiler, RDLCompileError
-from systemrdl.node import AddressableNode, RegfileNode
 from typing import Dict, List
+
+from systemrdl import RDLCompileError, RDLCompiler
+from systemrdl.node import AddressableNode, RegfileNode
 
 processed: List[AddressableNode] = []
 
