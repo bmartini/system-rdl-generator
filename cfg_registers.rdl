@@ -50,6 +50,6 @@ addrmap cfg_registers {
                 sw = rw;
                 hw = r;
             } value;
-        } END;
+        } FINISH;
     } ARRAY[3] @ 32;
 };

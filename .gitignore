@@ -1,6 +1,7 @@
 *.swp
 *.bak
 *.svh
+*.vhd
 *.hh
 */
 .mypy_cache
