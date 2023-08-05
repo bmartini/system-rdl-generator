@@ -41,7 +41,7 @@ def _generate_vhdl(node: AddressableNode, alignment: int) -> str:
     registers = _collect_registers(node, 0)
     if registers:
         for addr, name in sorted(registers.items()):
-            contents = contents + f"    constant {name} : std_logic_vector(31 downto 0) := {int(addr / alignment)};\n"
+            contents = contents + f"  constant {name} : std_logic_vector(31 downto 0) := {int(addr / alignment)};\n"
 
     # create localparam out of register array nodes
     for child in node.children():
@@ -54,9 +54,9 @@ def _generate_vhdl(node: AddressableNode, alignment: int) -> str:
                     stride = int(child.array_stride)
 
                     # create array offset localparam
-                    contents = contents + f"\n    constant {child.inst_name}_OFFSET : std_logic_vector(({repeat} * 32) - 1 downto 0) :=\n"
+                    contents = contents + f"\n  constant {child.inst_name}_OFFSET : std_logic_vector(({repeat} * 32) - 1 downto 0) :=\n"
                     for x in range(repeat, 0, -1):
-                        contents = contents + f"        std_logic_vector(to_unsigned({int((start + ((x - 1) * stride)) / alignment)}, 32)) &\n"
+                        contents = contents + f"    std_logic_vector(to_unsigned({int((start + ((x - 1) * stride)) / alignment)}, 32)) &\n"
                     contents = contents[:-3] + ";\n"
 
                     # create array register localparam
@@ -64,7 +64,7 @@ def _generate_vhdl(node: AddressableNode, alignment: int) -> str:
                     if registers:
                         contents = contents + "\n"
                         for addr, name in sorted(registers.items()):
-                            contents = contents + f"    constant {name} : std_logic_vector(31 downto 0) := {int(addr / alignment)};\n"
+                            contents = contents + f"  constant {name} : std_logic_vector(31 downto 0) := {int(addr / alignment)};\n"
 
     contents = contents + f"\nend package {filename};\n"
 
