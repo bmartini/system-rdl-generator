@@ -25,6 +25,7 @@ SystemRDL file in as an argument.
 ./generate_cc.py cfg_registers.rdl
 ./generate_py.py cfg_registers.rdl
 ./generate_sv.py cfg_registers.rdl
+./generate_vhd.py cfg_registers.rdl
 ```
 
 ### SystemVerilog Output
@@ -37,6 +38,16 @@ not arrays. Any 'regfile' arrays generate two 'localparams', the first
 containing the start/offset address of the array segment and the second the
 registers within the array section but relative to the segments start/offset
 address.
+
+### VHDL Output
+
+The VHDL output file contains a package that can be used/included into a VHDL
+module. The body of the VHDL package is a number of 'constant'. The first
+'constant' contains all registers within the top 'addrmap' and any inner
+'regfile' nodes so long as those 'regfile' nodes are not arrays. Any 'regfile'
+arrays generate two 'constants', the first containing the start/offset address
+of the array segment and the second the registers within the array section but
+relative to the segments start/offset address.
 
 ### Python Output
 
